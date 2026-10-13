@@ -8,7 +8,130 @@
   </head>
   <body>
     <div class="page">
-      <!-- Перенесите вашу верстку. Удалите статичные данные. Подключите скрипт -->
+
+      <!-- Шапка -->
+      <header class="header">
+        <div class="container header__inner">
+          <a class="logo" href="#" aria-label="На главную">
+            <img class="logo__img" src="images/logo.png" alt="Логотип салона — ножницы" />
+          </a>
+          <nav class="nav" aria-label="Основное меню">
+            <ul class="nav__list">
+              <li><a class="nav__link" href="#">Услуги</a></li>
+              <li><a class="nav__link" href="#">Галерея</a></li>
+              <li><a class="nav__link" href="#">Команда</a></li>
+              <li><a class="nav__link" href="#">Отзывы</a></li>
+              <li><a class="nav__link" href="#">Контакты</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Степпер -->
+      <div class="stepper">
+        <ol class="steps container">
+          <li class="step">
+            <span class="step__num">1</span>
+            <span class="step__label">Выбор мастера</span>
+          </li>
+          <li class="step">
+            <span class="step__num">2</span>
+            <span class="step__label">Выбор услуги</span>
+          </li>
+          <li class="step step--active">
+            <span class="step__num">3</span>
+            <span class="step__label">Выбор времени</span>
+          </li>
+          <li class="step">
+            <span class="step__num">4</span>
+            <span class="step__label">Контактные данные</span>
+          </li>
+          <li class="step">
+            <span class="step__num">5</span>
+            <span class="step__label">Подтверждение</span>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Основная область -->
+      <main class="main">
+        <div class="container">
+          <div class="page-title">
+            <span class="page-title__accent" aria-hidden="true"></span>
+            <h1 class="page-title__text">Выбор времени</h1>
+          </div>
+
+          <div class="booking">
+            <!-- Календарь -->
+            <section class="card calendar" aria-label="Календарь записи">
+              <header class="calendar__header">
+                <h2 class="calendar__title">Июнь 2025</h2>
+                <div class="calendar__nav">
+                  <button class="icon-btn" type="button" aria-label="Предыдущий месяц"><</button>
+                  <button class="icon-btn" type="button" aria-label="Следующий месяц">></button>
+                </div>
+              </header>
+
+              <ul class="weekdays">
+                <li class="weekdays__item">Пн</li>
+                <li class="weekdays__item">Вт</li>
+                <li class="weekdays__item">Ср</li>
+                <li class="weekdays__item">Чт</li>
+                <li class="weekdays__item">Пт</li>
+                <li class="weekdays__item">Сб</li>
+                <li class="weekdays__item">Вс</li>
+              </ul>
+
+              <div class="days"></div>
+            </section>
+
+            <!-- Слоты времени -->
+            <aside class="card slots" aria-label="Доступное время">
+              <h2 class="slots__title">Доступное время</h2>
+              <div class="slots__grid"></div>
+
+          <div class="actions">
+            <button class="btn" type="button">Продолжить</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- Подвал -->
+      <footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="logo--footer" aria-hidden="true">
+        <img class="logo__img" src="images/logo.png" alt="" />
+      </span>
+      <p class="footer__tagline">Ждём вас к нам!</p>
     </div>
+
+    <div class="footer__col">
+      <h3 class="footer__heading">Контакты</h3>
+      <ul class="footer__list">
+        <li class="footer__item">ул. Садовая, 15, Москва</li>
+        <li class="footer__item">
+          <a class="footer__phone" href="tel:+74951234567">+7 (495) 123-45-67</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3 class="footer__heading">Режим работы</h3>
+      <ul class="footer__list">
+        <li class="footer__item">Пн–Пт: 9:00 – 21:00</li>
+        <li class="footer__item">Сб–Вс: 10:00 – 19:00</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer__bottom">
+    <p class="footer__copy">© 2026. Все права защищены.</p>
+    <a class="footer__link" href="#">Политика конфиденциальности</a>
+  </div>
+</footer>
+
+    </div>
+    <script src="script.js"></script>
   </body>
 </html>
