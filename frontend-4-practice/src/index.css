@@ -1,7 +1,401 @@
-/* Глобальные стили.
-   Минимум: сброс отступов и шрифт по умолчанию.
-   Остальное — стили своей страницы — добавляем сами
-   (в этом файле или в отдельных .css для компонентов). */
+/* ---------- База ---------- */
+:root {
+  --color-dark: #333333;
+  --color-pink-bar: #f7b2bf;
+  --color-pink-bg: #fbdce3;
+  --color-pink-card: #f9c4ce;
+  --color-accent: #f2a3b3;
+  --color-light: #f8f8f8;
+  --color-gray: #e7e7e7;
+  --color-text: #2b2b2b;
+  --color-muted: #9d9d9d;
+  --color-day-muted: #c6c6c6;
+  --color-step-muted: #a97f8a;
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+body {
+  margin: 0;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  color: var(--color-text);
+  background: var(--color-pink-bg);
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  padding: 44px 0 56px;
+}
+
+.container {
+  max-width: 770px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+ul, ol { list-style: none; margin: 0; padding: 0; }
+h1, h2, h3, p { margin: 0; }
+button { font: inherit; }
+
+/* ---------- Шапка ---------- */
+.header {
+  background: var(--color-dark);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 82px;
+}
+
+.logo__img {
+  display: block;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+}
+
+.logo--footer .logo__img {
+  width: 34px;
+  height: 34px;
+}
+
+.logo:hover { opacity: 0.75; }
+
+.nav__list {
+  display: flex;
+  gap: 28px;
+}
+
+.nav__link {
+  color: #f1f1f1;
+  font-size: 13px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.nav__link:hover {
+  color: var(--color-pink-bar);
+}
+
+/* ---------- Степпер ---------- */
+.stepper {
+  background: var(--color-pink-bar);
+  padding: 23px 0;
+}
+
+.steps {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.step__num {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-muted);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.step__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--color-step-muted);
+  white-space: nowrap;
+}
+
+.step--active .step__num { background: #111111; }
+.step--active .step__label { color: #1f1f1f; }
+
+/* ---------- Заголовок страницы ---------- */
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 30px;
+}
+
+.page-title__accent {
+  width: 48px;
+  height: 10px;
+  background: var(--color-accent);
+}
+
+.page-title__text {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #111111;
+}
+
+/* ---------- Карточки ---------- */
+.booking {
+  display: grid;
+  grid-template-columns: 1.36fr 1fr;
+  gap: 25px;
+  align-items: start;
+}
+
+.card {
+  background: var(--color-pink-card);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* ---------- Календарь ---------- */
+.calendar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.calendar__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.calendar__nav {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-light);
+  color: #333333;
+  font-size: 13px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: box-shadow 0.15s, background 0.15s;
+}
+
+.icon-btn:hover {
+  background: #ffffff;
+  box-shadow: var(--shadow-hover);
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.weekdays__item {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #3a3a3a;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.day {
+  height: 26px;
+  border: 2px solid transparent;
+  border-radius: 14px;
+  background: var(--color-light);
+  color: #2f2f2f;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.day--muted { color: var(--color-day-muted); }
+
+.day--busy {
+  background: var(--color-gray);
+  color: #8a8a8a;
+}
+
+.day--selected {
+  border-color: #111111;
+  color: #111111;
+}
+
+/* ---------- Слоты времени ---------- */
+.slots__title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 18px;
+}
+
+.slots__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 22px;
+}
+
+.slot {
+  min-height: 40px;
+  padding: 5px 10px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background: var(--color-light);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+.slot__time {
+  font-size: 12px;
+  font-weight: 700;
+  color: #222222;
+}
+
+.slot__note {
+  font-size: 9px;
+  color: var(--color-muted);
+}
+
+.slot--busy { background: #ebebeb; }
+.slot--busy .slot__time { color: var(--color-muted); }
+.slot--selected { border-color: #111111; }
+
+/* ---------- Общая реакция на наведение ---------- */
+.day:hover:enabled,
+.slot:hover:enabled,
+.btn:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-1px);
+}
+
+.day:disabled,
+.slot:disabled {
+  cursor: default;
+}
+
+/* ---------- Кнопка действия ---------- */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 68px;
+}
+
+.btn {
+  border: none;
+  border-radius: 22px;
+  background: var(--color-light);
+  color: #222222;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 34px;
+  cursor: pointer;
+  transition: box-shadow 0.15s, transform 0.15s;
+}
+
+/* ---------- Подвал ---------- */
+.footer {
+  background: var(--color-dark);
+  color: #c9c9c9;
+  padding: 46px 0 26px;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 1.4fr 1.1fr 1fr;
+  gap: 30px;
+  padding-bottom: 36px;
+}
+
+.footer__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer__tagline {
+  font-size: 12px;
+  color: #c9c9c9;
+}
+
+.footer__heading {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.footer__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 12px;
+}
+
+.footer__item {
+  font-size: 12px;
+}
+
+.footer__phone {
+  color: #ffffff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer__phone:hover { color: var(--color-pink-bar); }
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  padding-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #9a9a9a;
+}
+
+.footer__link {
+  color: #9a9a9a;
+  text-decoration: underline;
+  transition: color 0.15s;
+}
+
+.footer__link:hover { color: var(--color-pink-bar); }
+/* Стили страницы.
+   Скопируйте с предудущей практики. */
 
 * {
   margin: 0;
