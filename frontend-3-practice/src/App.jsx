@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Stepper from "./components/Stepper";
 import Calendar from "./components/Calendar";
 import TimeSlots from "./components/TimeSlots";
+import BookingBottomBar from "./components/BookingBottomBar";
 import Footer from "./components/Footer";
 import { generateSlotsForDate } from "./data/slots";
 import { isDateSelectable } from "./data/date";
@@ -16,14 +17,12 @@ const TODAY = (() => {
 
 
 function App() {
-  // Состояние календаря и выбора
   const [currentYear, setCurrentYear] = useState(TODAY.year);
   const [currentMonth, setCurrentMonth] = useState(TODAY.month);
   const [selectedDate, setSelectedDate] = useState({ ...TODAY });
   const [selectedTime, setSelectedTime] = useState(null);
   const [slots, setSlots] = useState(() => generateSlotsForDate(TODAY));
 
-  // Слоты всегда соответствуют выбранной дате
   useEffect(() => {
     if (selectedDate) {
       setSlots(generateSlotsForDate(selectedDate));
@@ -32,7 +31,6 @@ function App() {
     }
   }, [selectedDate]);
 
-  // Листание месяцев вперёд/назад
   function changeMonth(delta) {
     let m = currentMonth + delta;
     let y = currentYear;
@@ -42,7 +40,6 @@ function App() {
     setCurrentMonth(m);
     setCurrentYear(y);
 
-    // Если выбранная дата не в новом месяце — сбрасываем выбор
     if (
       !selectedDate ||
       selectedDate.year !== y ||
@@ -53,18 +50,15 @@ function App() {
     }
   }
 
-  // Клик по дню: выбираем дату и сбрасываем время
   function handleDayClick(day) {
     setSelectedDate({ year: currentYear, month: currentMonth, day });
     setSelectedTime(null);
   }
 
-  // Клик по слоту: запоминаем время
   function handleSlotClick(time) {
     setSelectedTime(time);
   }
 
-  // Кнопка «Продолжить»
   function handleContinue() {
     if (!selectedDate || !selectedTime) return;
 
@@ -116,6 +110,10 @@ function App() {
           </div>
 
           <div className="actions">
+            <BookingBottomBar
+              selectedDate={selectedDate}
+              selectedTime={selectedTime}
+            />
             <button
               className="btn"
               type="button"
